@@ -5,6 +5,14 @@ import useFetch from '@/services/useFetch';
 import { fetchMoviesDetails } from '@/services/api';
 import { icons } from '@/constants/icons';
 
+
+const MovieInfo = ({label, value} : {label : string, value : string}) => (
+  <View className="flex-col items-start justify-center mt-5">
+    <Text className="text-light-200 font-normal text-sm">{label}</Text>
+    <Text className="text-light-100 font-bold text-sm mt-2">{value || "N/A"}</Text>
+  </View>
+)
+
 const MovieDetails = () => {
   const  { id } = useLocalSearchParams();
   const {data : movie , loading} = useFetch(() => fetchMoviesDetails(id as string));
